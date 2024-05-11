@@ -1,0 +1,20 @@
+@use './variables.scss' as variable;
+@import url('./reset.scss');
+@import url('./fonts.scss');
+@import url('../components/header/header.scss');
+@import url('../components/main/main.scss');
+@import url('../components/main/news/news.scss');
+@import url('../components/footer/footer.scss');
+
+
+
+html {
+  font-family: variable.$font-primary;
+  background-color: variable.$background-color;
+  color: variable.$text-color-primary;
+}
+
+.wrapper {
+  max-width: 1440px;
+  margin: 0 auto;
+}

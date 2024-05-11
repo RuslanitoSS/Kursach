@@ -1,0 +1,17 @@
+@use '../../../../styles/variables.scss' as variable;
+
+.login__button {
+    border-radius: 5px;
+    width: 108px;
+    height: 37px;
+    backdrop-filter: blur(2px);
+    background: variable.$color-secondary;
+    font-weight: 700;
+    font-size: 20px;
+    color: variable.$text-color-third;
+    border: none;
+}
+
+.login__button:hover {
+    cursor: pointer;
+}

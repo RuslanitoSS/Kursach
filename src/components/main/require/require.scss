@@ -1,0 +1,67 @@
+@use '../../../styles/variables.scss' as vb;
+
+.require {
+
+    &__main-text {
+        text-align: center;
+        width: fit-content;
+        margin: 0 auto;
+        margin-bottom: 60px;
+        font-size: 48px;
+        color: vb.$text-color-secondary;
+        font-family: vb.$font-primary;
+    }
+
+    &__require-list {
+        display: flex;
+        margin: 0 auto;
+        width: fit-content;
+        margin-bottom: 50px;
+        gap: 70px;
+    }
+
+    &__require-item--star-text {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        color: vb.$text-color-primary;
+        align-self: center;
+        justify-self: center;
+        font-size: 36px;
+        font-family: vb.$font-secondary;
+    }
+
+    &__require-list--require-item {
+        position: relative;
+        width: fit-content;
+        height: fit-content;
+        display: flex;
+    }
+
+    &__require-button {
+        border: none;
+        cursor: pointer;
+        width: fit-content;
+        display: flex;
+        background-color: vb.$color-secondary;
+        color: vb.$background-color-secondary;
+        font-family: vb.$font-primary;
+        font-size: 24px;
+        border-radius: 12px;
+        font-weight: bold;
+        text-decoration: none;
+        padding: 15px 50px;
+        margin-bottom: 60px;
+        margin: 0 auto;
+    }
+}
+
+.require__contanier {
+    padding-bottom: 140px;
+}
+
+.section-require {
+    padding: 40px 0;
+}

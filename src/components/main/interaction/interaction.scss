@@ -1,0 +1,62 @@
+@use '../../../styles/variables.scss' as vb;
+
+.interaction {
+  position: relative;
+  text-align: center;
+  margin-top: 100px;
+
+  &__heading {
+    margin-bottom: 40px;
+    font-size: 48px;
+    font-family: vb.$font-primary;
+    color: vb.$color-secondary;
+    font-weight: bold;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  &__text {
+    color: vb.$text-color-primary;
+    font-size: 24px;
+    font-weight: normal;
+
+    li {
+      position: absolute;
+      width: 320px;
+    }
+
+    // 1440x472
+    #step-1 {
+      left: 2.5%;
+      top: 37%;
+    }
+
+    #step-2 {
+      left: 18.75%;
+      top: 89%;
+    }
+
+    #step-3 {
+      left: 38.2%;
+      top: 34%;
+    }
+
+    #step-4 {
+      left: 50.6%;
+      top: 74%;
+    }
+
+    #step-5 {
+      left: 65.2%;
+      top: 24.3%;
+    }
+
+    #step-6 {
+      right: 0;
+      top: 59.3%;
+    }
+  }
+
+}

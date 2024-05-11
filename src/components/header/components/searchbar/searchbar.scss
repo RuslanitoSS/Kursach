@@ -1,0 +1,28 @@
+@use '../../../../styles/variables.scss' as variable;
+
+.header__search-bar {
+    max-width: max-content;
+    position: relative;
+
+
+    &-input {
+        background-color: variable.$background-color;
+        border: none;
+        color: variable.$text-color-primary;
+        width: 238px;
+        height: 35px;
+        border-radius: 5px;
+        padding-left: 10px;
+
+        :focus {
+            outline: 1px solid white;
+        }
+    }
+
+    img {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        stroke: variable.$color-secondary
+    }
+}

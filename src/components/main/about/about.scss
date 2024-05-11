@@ -1,0 +1,111 @@
+@use '../../../styles/variables.scss' as vb;
+
+.about {
+    text-align: center;
+    position: relative;
+    padding: 0 82px;
+
+    &__left {
+        max-width: max-content;
+        width: 100%;
+        text-align: left;
+        position: relative;
+        margin-bottom: 100px;
+    }
+    
+    &__right {
+        width: 100%;
+        position: relative;
+        text-align: right;
+        margin-bottom: 130px;
+        
+    }
+
+    &_hwo {
+        margin: 44px auto 10px;
+        font-weight: 700;
+        font-size: 48px;
+    }
+
+    &__line {
+        border-radius: 20px;
+        width: 10px;
+        height: 300px;
+        background-color: vb.$color-secondary;
+        position: absolute;
+
+        &-1 {
+            top: 50px;
+            left: -50px;
+        }
+
+        &-2 {
+            right: -50px;
+            top: 50px;
+        }
+    }
+
+    &__arrow-1 {
+        transform: scaleX(-1);
+        position: absolute;
+        top: 100px;
+        right: -350px;
+        animation: show 4s infinite;
+    }
+
+    &__arrow-2 {
+        position: absolute;
+        left: 150px;
+        top: 100px;
+        animation: show 4s infinite
+    }
+}
+
+.left, .right {
+    text-align: left;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.2;
+}
+
+
+.left {
+    max-width: 556px;
+}
+
+.right {
+    max-width: 647px;
+    margin-left: auto;
+    text-align: right;
+    right: 0;
+    position: relative;
+}
+
+.about__student {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 123px;
+
+    p {
+        margin-top: 25px;
+        font-weight: 600;
+        font-size: 24px;
+        text-align: center;
+        max-width: 300px;
+    }
+
+    img {
+        max-width: 75px;
+        max-height: 75px;
+    }
+}
+
+@keyframes show {
+    from {
+        height: 0px;
+    }
+
+    to{
+        height: 100%;
+    }
+}

@@ -1,0 +1,79 @@
+@use '../../../styles/variables.scss' as vb;
+
+.news {
+
+    background-image: url('./assets/background.png');
+    background-position: center;
+    background-size: cover;
+    margin: 0 auto;
+    &__main-text {
+        width: fit-content;
+        text-align: center;
+        margin: 0 auto;
+        font-size: 48px;
+        color: vb.$text-color-secondary;
+        font-family: vb.$font-primary;
+        margin-bottom: 60px;
+    }
+
+    &__news-list {
+        display: flex;
+        justify-content: space-between;
+        max-width: 1000px;
+        margin: 0 auto;
+        margin-bottom: 100px;
+    }
+
+    &__news-list--news-item {
+        max-width: 400px;
+        height: 382px;
+        overflow: hidden;
+        border-radius: 30px;
+        cursor: pointer;
+        position: relative;
+    }
+
+    &__details-button {
+        border: none;
+        cursor: pointer;
+        width: fit-content;
+        display: flex;
+        background-color: vb.$color-secondary;
+        color: vb.$background-color-secondary;
+        font-family: vb.$font-primary;
+        font-size: 24px;
+        border-radius: 12px;
+        font-weight: bold;
+        text-decoration: none;
+        padding: 15px 50px;
+        margin-bottom: 60px;
+        margin: 0 auto;
+    }
+
+    &__news-item--news-text {
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 31px;
+        font-family: vb.$font-primary;
+        position: absolute;
+        top: 45%;
+        background-color: #000000bf;
+        padding: 10px;
+        padding-bottom: 20px;
+        left: 0;
+    }
+
+    &__container {
+        padding-bottom: 60px;
+        padding-top: 50px;
+    }
+
+}
+
+.section-news {
+    background-image: url('./assets/background.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 40px 0;
+}

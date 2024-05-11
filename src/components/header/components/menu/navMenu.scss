@@ -1,0 +1,14 @@
+nav {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.nav__el {
+    list-style: none;
+    font-size: 20px;
+    font-weight: 1200;
+    max-height: max-content;
+}
+
+

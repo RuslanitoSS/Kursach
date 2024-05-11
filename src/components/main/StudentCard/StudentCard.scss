@@ -1,0 +1,53 @@
+@use '../../../styles/variables.scss' as vb;
+
+.students__card {
+    min-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url(./assets/studentCardBG.png);
+    background-size: cover;
+}
+
+.card {
+    &__heading {
+        font-size: 36px;
+        font-family: vb.$font-primary;
+        font-weight: bold;
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+
+    &-inner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 8%;
+        margin-right: 2%;
+
+        &__img {
+            border-radius: 30px;
+            width: 300px;
+            aspect-ratio: 1/1;
+            object-position:center;
+            object-fit: cover;
+        }
+
+        &-left {
+            
+            &__text {
+                font-size: 36px;
+                font-weight: 400;
+                text-wrap:balance;
+                margin-bottom: 40px;
+            }
+
+            &__link {
+                font-size: 20px;
+                color: darken(vb.$text-color-primary, 20);
+                font-weight: 500;
+            }
+        }
+    }
+}

@@ -1,0 +1,25 @@
+@use '../../styles/variables.scss' as vb;
+
+.slider {
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    &__btn{
+        all: unset;
+        background-color: vb.$background-color;
+        z-index: 99;
+        &:first-child {
+            padding-right: 40px;
+        }
+
+        &:last-child {
+            padding-left: 40px;
+        }
+    }
+    &__inside {
+        transition: transform 0.5s ease-in-out;
+        max-width: 1200px;
+        display: flex;
+        
+    }
+}
