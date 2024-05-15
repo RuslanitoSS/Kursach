@@ -1,0 +1,55 @@
+@use '../../styles/variables.scss' as vb;
+
+.error-page {
+display: flex;
+flex-direction: column;
+align-items: center;
+    h1 {
+        color: vb.$text-color-secondary;
+        font-size: 120px;
+        font-family: Moloko;
+        text-align: center;
+        margin-top: 80px;
+    }
+
+    h2 {
+        color: vb.$text-color-primary;
+        font-size: 60px;
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 35px;
+
+        span {
+            color: vb.$text-color-secondary;
+            font-size: 65px;
+        }
+    }
+
+    p {
+        text-align: center;
+        font-size: 30px;
+
+    }
+
+    &__img {
+        width: 120px;
+        margin-top: 30px;
+    }
+
+    a {
+        color: vb.$text-color-primary;
+        font-size: 30px;
+        text-decoration: none;
+        padding: 20px 50px;
+        background-color: vb.$color-secondary;
+        margin-top: 50px;
+        color: black;
+        border-radius: 15px;
+        transition: all .25s ease-in-out;
+    }
+
+    a:hover {
+        background-color: darken($color: vb.$color-secondary, $amount: 20);
+        color: vb.$almost-white
+    }
+}

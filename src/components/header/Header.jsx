@@ -10,7 +10,7 @@ const Header = () => {
         <div className="wrapper header">
             <div className="header__left-side">
                 <img src={logoSrc}/>
-                <SearchBar/>
+                
             </div>
             <div className="header__nav-button">
                 <NavMenu/>

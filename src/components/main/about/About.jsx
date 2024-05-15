@@ -4,6 +4,7 @@ import Arrow from '../../assets/Arrow'
 const About = () => {
     return (
         <div className="about">
+            <h1 id='about' ></h1>
             <div className="about__left">
                 <h3 className="about_hwo">
                     Студенту
@@ -53,15 +54,15 @@ const About = () => {
             <div className="about__student">
                 <div>
                     <img src={png} alt="" />
-                    <p>продвижение ваших проектов</p>
+                    <p>яркое и понятное портфолио студентов</p>
                 </div>
                 <div>
                     <img src={png} alt="" />
-                    <p>множество едномышленников</p>
+                    <p>широкий круг специалистов</p>
                 </div>
                 <div>
                     <img src={png} alt="" />
-                    <p>большие возможности развития своих навыков</p>
+                    <p>удобный поиск и подбор кандидатов</p>
                 </div>
             </div>
         </div>

@@ -73,13 +73,11 @@
 
 .firstsreen_img:hover img{
     cursor: pointer;
-    animation: spin 3s infinite;
+   
 
 }
-
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
+.firstsreen_img p {
+    pointer-events: none;
 }
+
 

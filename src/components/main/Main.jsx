@@ -36,11 +36,6 @@ const Main = () => {
                     <Interaction/>
                 </div>
             </section>
-            <section className="section-news">
-                <div className="wrapper main">
-                    <News/>
-                </div>
-            </section>
             <section className="section-require">
                 <div className="wrapper main">
                     <Require/>
