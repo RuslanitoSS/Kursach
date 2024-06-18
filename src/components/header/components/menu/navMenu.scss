@@ -13,11 +13,13 @@ nav ul{
     text-decoration: none;
     color:inherit;
     padding: 0px 10px 10px;
+    transition: color 0.1s ease-in-out;
 
+    &:hover {
+        color: vb.$text-color-secondary;
+        
+    }
 }
-.nav__el.active {
-    border-bottom: 2px solid vb.$color-secondary;
-    border-radius: 15px;
-}
+
 
 

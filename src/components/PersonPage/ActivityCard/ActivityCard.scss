@@ -1,0 +1,54 @@
+@use '../../../styles/variables.scss' as vb;
+
+.activity-card {
+    padding: 20px 50px;
+    padding-left: 30px;
+    border-radius: 10px;
+    border: 3px solid #343333;
+    max-width: fit-content;
+    color: #e1e1e1;
+    transition: border .1s ease-in-out;
+
+    &:hover {
+        border: 3px solid vb.$color-secondary;
+    }
+
+    &__name {
+        font-size: 24px;
+        font-weight: 600;
+        display: block;
+        position: relative;
+        padding-right: 7ch;
+        color: inherit;
+        text-decoration: none;
+        transition:color .1s ease-in-out;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+    &__name:hover {
+        color: vb.$color-secondary;
+    }
+    &__type  {
+        position: absolute;
+        top: -10px;
+        right: 0;
+        font-size: 20px;
+        padding: 5px 10px;
+        background-color: #e1e1e1;
+        color: #343333;
+        font-weight: 600;
+        border-radius: 10px;
+        text-align: center;
+        
+        
+    }
+    &__description {
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+
+    &__date {
+        font-size: 20px;
+        color: lighten($color: #343333, $amount: 45) 
+    }
+}

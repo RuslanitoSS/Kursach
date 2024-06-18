@@ -1,0 +1,9 @@
+@use '../../styles/variables.scss' as vb;
+
+.header__bottom {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 18px 0px;
+    gap: 15px;
+}

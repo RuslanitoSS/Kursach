@@ -1,0 +1,81 @@
+@use '../../../styles/variables.scss' as vb;
+
+.project-card {
+    box-sizing: border-box;
+    max-width: 100%;
+    display: flex;
+    font-size: 20px;
+    padding: 10px 0px;
+    padding-left: 30px;
+
+    margin: 10px 0px;
+    gap: 20px;
+    border-bottom: 2px solid vb.$background-color-secondary;
+    &__main {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__left {
+        background-color: vb.$background-color-secondary;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+
+        .left__photo {
+            margin: 30px 30px;
+            scale: 1.2;
+        }
+    }
+
+    & a {
+        color: #e1e1e1;
+        text-decoration: none;
+        transition: color .1s ease-in-out;
+    }
+
+    & a:hover {
+        color: vb.$color-secondary ;
+        text-decoration: underline;
+    }
+
+    .main {
+        &__name {
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        &__place {
+            margin: 1rem 0;
+        }
+
+        &__organizers{
+            display: flex;
+            margin: 0;
+            gap: 14px;
+        }
+    }
+}
+.right__button {
+    border-radius: 8px;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(2px);
+    background: #72c007;
+    font-weight: 500;
+    font-size: 22px;
+    color: #272727;
+    border: 2px solid #72c007;
+    height: fit-content;
+    margin-right: 40px;
+    transition: all .1s ease;
+}
+.right__button:hover {
+    color: #72c007;
+    background-color: #272727;
+    cursor: pointer;
+}

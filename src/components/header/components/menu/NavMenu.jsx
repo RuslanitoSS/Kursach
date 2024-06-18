@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const NavMenu = () => {
   return (
@@ -6,9 +7,7 @@ const NavMenu = () => {
       <ul>
         <li>
           <NavLink
-            className={(isActive) => {
-              return isActive ? "nav__el active" : "nav__el";
-            }}
+            className={"nav__el"}
             to="/#about"
           >
             О нас
@@ -16,9 +15,7 @@ const NavMenu = () => {
         </li>
         <li>
           <NavLink
-            className={(isActive) => {
-              return isActive ? "nav__el active" : "nav__el";
-            }}
+            className={"nav__el"}
             to="/projects"
           >
             Проекты
@@ -26,9 +23,7 @@ const NavMenu = () => {
         </li>
         <li>
           <NavLink
-            className={(isActive) => {
-              return isActive ? "nav__el active" : "nav__el";
-            }}
+            className={"nav__el"}
             to="/events"
           >
            Мероприятия
@@ -36,9 +31,7 @@ const NavMenu = () => {
         </li>
         <li>
           <NavLink
-            className={(isActive) => {
-              return isActive ? "nav__el active" : "nav__el";
-            }}
+            className={"nav__el"}
             to="/students"
           >
             Студенты
@@ -46,9 +39,7 @@ const NavMenu = () => {
         </li>
         <li>
           <NavLink
-            className={(isActive) => {
-              return isActive ? "nav__el active" : "nav__el";
-            }}
+            className={"nav__el"}
             to="/"
           >
             Контакты
