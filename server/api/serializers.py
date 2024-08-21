@@ -24,7 +24,7 @@ class ParticipationSerializer(serializers.ModelSerializer):
 class EmployeeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Employee
-        fields = ['id', 'name', 'patronymic', 'surname', 'university', 'login', 'password']
+        fields = ['id', 'first_name', 'middle_name', 'second_name', 'university', 'login', 'password']
 
 class OrganizationSerializer(serializers.ModelSerializer):
     class Meta:

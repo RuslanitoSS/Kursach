@@ -9,44 +9,7 @@ from rest_framework.response import Response
 #методов в качесве viewset'а 
 
 
-""" class StudentViewset(viewsets.ViewSet):
-    permission_classes = [permissions.AllowAny]
-    queryset = Student.objects.all()
-    serializer_class = StudentSerializer
-    
 
-    def list(self, request):
-        queryset = self.queryset
-        serializer= self.serializer_class(queryset, many=True)
-        return Response(serializer.data)
-    
-    def create(self, request):
-        serializer= self.serializer_class(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        else:
-            return Response(serializer.errors, status=400)
-    
-    def retrieve(self, request, pk=None):
-        student = self.queryset.get(pk=pk)
-        serializer = self.serializer_class(student)
-        return Response(serializer.data)
-
-    def update(self, request):
-        student= self.queryset.get(pk=pk)
-        serializer= self.serializer_class(student, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        else:
-            return Response(serializer.errors, status=400)
-    
-    def destroy(self, request):
-        student= self.queryset.get(pk=pk)
-        student.delete()
-        return Response(status=204)
- """
 
 class StudentViewset(viewsets.ViewSet):
     permission_classes = [permissions.AllowAny]

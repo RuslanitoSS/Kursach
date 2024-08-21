@@ -1,0 +1,84 @@
+@use '../../styles/variables.scss' as vb;
+
+
+.person-page {
+    margin: 50px 82px 100px;
+    display: flex;
+    width: 100%;
+    gap:100px;
+    display: flex;
+
+    &__left {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    &__right {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        
+    }
+    .left {
+
+        &__photo {
+            background-color: vb.$background-color-secondary;
+            border-radius: 50%;
+            display: flex;
+            padding: 40px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        &__img {
+            width: 200px;    
+        }
+
+        &__name{
+            max-width: 280px;
+            font-size: 36px;
+            font-weight: 600;
+            margin: 20px 0px;
+        }
+        &__workplace {
+            max-width: 280px;
+        }
+        &__type, &__workplace {
+            font-size: 22px;
+            margin: 10px 0px;
+        }
+    }
+    .right {
+        &__activities {
+            font-size: 32px;
+            font-weight: 500;
+            margin-bottom: 30px;
+        }
+        &__desc {
+            font-size: 22px;
+        }
+        &__activities-list {
+            margin-left: 50px;
+            width: 100%;
+            gap: 25px;
+            display: flex;
+          
+            flex-wrap: wrap;
+        }
+
+        &__members {
+            margin-top: 30px;
+
+            .members {
+                &-heading {
+                    font-size: 32px;
+                    font-weight: 500;
+                    
+                }
+            }
+           
+        }
+    }
+    
+   
+}
