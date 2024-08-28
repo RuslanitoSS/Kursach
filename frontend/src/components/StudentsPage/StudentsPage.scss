@@ -42,5 +42,10 @@
                 background-color: darken($color: vb.$background-color, $amount: 5) ;
             }
         }
+
+    
     }
+}
+.search__result__item:last-of-type  > div.student-card {
+    border-bottom: none;
 }

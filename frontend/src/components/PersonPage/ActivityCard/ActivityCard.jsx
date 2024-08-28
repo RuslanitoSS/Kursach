@@ -1,15 +1,17 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const ActivityCard = ({ activityName, activityType, activityDescription, activityDate }) => {
+const ActivityCard = ({ activityData, activityType }) => {
     return (
         <div className="activity-card">
-            <a href="/" className="activity-card__name">{activityName}
-                <span className="activity-card__type"> {activityType == 'event' ? "Мероп" : "Проект"}</span>
-            </a>
-
-            <p className="activity-card__description"> {activityDescription}</p>
-            <span className="activity-card__date"> {activityDate} </span>
+            <Link className="activity-card__name" to={'/events/' + String(activityData.id)}>
+                {activityData.name}
+                <span className="activity-card__type"> {activityType}</span>
+            </Link>
+            <p className="activity-card__description"> {activityData.short_description}</p>
+            {activityType === 'Проект' ? <></> :
+                <span className="activity-card__date"> {activityData.start_date + " - " + activityData.end_date} </span>
+            }
         </div>
     )
 }

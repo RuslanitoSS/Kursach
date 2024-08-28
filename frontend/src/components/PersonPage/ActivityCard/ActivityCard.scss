@@ -24,6 +24,7 @@
         transition:color .1s ease-in-out;
         margin-top: 10px;
         margin-bottom: 20px;
+        width: fit-content;
     }
     &__name:hover {
         color: vb.$color-secondary;

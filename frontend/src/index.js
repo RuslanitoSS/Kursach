@@ -19,6 +19,7 @@ import CreateEventRoute from './routes/CreateEventRoute/CreateEventRoute.jsx'
 import EventPage from './components/EventPage/EventPage.jsx'
 import ProjectPage from './components/ProjectPage/ProjectPage.jsx'
 
+
 const router = createBrowserRouter([
   {
     path: "/",
