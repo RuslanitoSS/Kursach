@@ -2,7 +2,7 @@ import SearchBar from "./components/searchbar/SearchBar";
 import NavMenu from "./components/menu/NavMenu";
 import Login from "./components/login/Login";
 import logoSrc from './лого.svg'
-import profileSVG from './profile.svg'
+import profileSVG from '../StudentsPage/StudentCard/placeholder.svg'
 import { NavLink, Link } from "react-router-dom";
 import React from "react";
 

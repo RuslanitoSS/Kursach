@@ -2,9 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const ActivityCard = ({ activityData, activityType }) => {
+    const linkUrl = activityType === 'Проект' ? '/projects/' : "/events/"
     return (
         <div className="activity-card">
-            <Link className="activity-card__name" to={'/events/' + String(activityData.id)}>
+            <Link className="activity-card__name" to={linkUrl + String(activityData.id)}>
                 {activityData.name}
                 <span className="activity-card__type"> {activityType}</span>
             </Link>

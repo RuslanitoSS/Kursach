@@ -8,7 +8,6 @@ import "./styles/App.scss";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
 import StudentsPage from "./components/StudentsPage/StudentsPage"
 import StaffPage from "./components/StaffPage/StaffPage"
-import EventsPage from "./components/EventsPage/EventsPage"
 import ProjectsPage from "./components/ProjectsPage/ProjectsPage"
 import PersonPage from "./components/PersonPage/PersonPage";
 import AdminPage from "./components/AdminPage/AdminPage";
@@ -16,8 +15,8 @@ import AuthPage from './components/AuthPage/AuthPage'
 import CreatePage from './components/CreatePage/CreatePage.jsx'
 import CreateProjectRoute from './routes/CreateProjectRoute/CreateProjectRoute.jsx'
 import CreateEventRoute from './routes/CreateEventRoute/CreateEventRoute.jsx'
-import EventPage from './components/EventPage/EventPage.jsx'
-import ProjectPage from './components/ProjectPage/ProjectPage.jsx'
+import EventsPage from './components/EventsPage/EventsPage'
+import ActivityPage from './components/ActivityPage/ActivityPage'
 
 
 const router = createBrowserRouter([
@@ -52,12 +51,12 @@ const router = createBrowserRouter([
   },
   {
     path: "/events/",
-    element: <EventsPage />,
+    element: <EventsPage/>,
     errorElement: <ErrorPage />,
   },
   {
     path: "/events/:eventId",
-    element: <EventPage/>,
+    element: <ActivityPage type={'event'}/>,
     errorElement: <ErrorPage />,
   },
   {
@@ -67,7 +66,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/projects/:projectid",
-    element: <ProjectPage />,
+    element: <ActivityPage type={'project'}/>,
     errorElement: <ErrorPage />,
   },
   {

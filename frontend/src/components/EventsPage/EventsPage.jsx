@@ -9,7 +9,7 @@ import AxiosInstance from '../Axios/Axios'
 
 
 
-const StudentsPage = () => {
+const EventsPage = () => {
     const testEvents = [{
         event_id: 1,
         name: 'О3купавцйуцавпаиа',
@@ -133,4 +133,4 @@ const StudentsPage = () => {
     )
 }
 
-export default StudentsPage
+export default EventsPage

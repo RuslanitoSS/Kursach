@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Header from '../header/Header';
 import Footer from '../footer/Footer';
 import ActivityCard from "./ActivityCard/ActivityCard";
-import placeholderImg from '../StudentsPage/StudentCard/placeholder.svg'
+import placeholderImgGreen from '../StudentsPage/StudentCard/placeholderGreen.svg'
 import { useParams } from "react-router-dom";
 
 
@@ -33,12 +33,51 @@ const PersonPage = ({ type }) => {
         }
     }
 
+    async function testGetData() {
+
+        const testActivities = [
+            {
+                id: 1,
+                name: 'Polyweb',
+                short_description: 'Студенеская веб студия',
+                start_date: '30.08.2024',
+                end_date: '30.08.2024',
+            },
+            {
+                id: 1,
+                name: 'Polyweb',
+                short_description: 'Студенеская веб студия',
+                start_date: '30.08.2024',
+                end_date: '30.08.2024',
+            },
+            {
+                id: 1,
+                name: 'Polyweb',
+                short_description: 'Студенеская веб студия',
+                start_date: '30.08.2024',
+                end_date: '30.08.2024',
+            },
+        ]
+        const json = {
+            first_name: 'Руслан',
+            last_name: 'Супроткин',
+            university: "Политех",
+            projects: testActivities,
+            events: testActivities,
+            organizations: testActivities,
+        }
+
+        setProfileData(json)
+        setIsLoading(false);
+    }
+
     useEffect(() => {
-        getData()
+        /* getData() */
+        testGetData()
 
     }, [])
 
-    const { first_name, last_name, middle_name, university, course, projects, events } = profileData
+    const { first_name, last_name, middle_name, university, projects, events, organizations } = profileData
 
     return (
         <>
@@ -50,33 +89,54 @@ const PersonPage = ({ type }) => {
                     <div className="person-page">
                         <div className="person-page__left">
                             <div className="left__photo">
-                                <img className="left__img" src={placeholderImg} alt="" />
+                                <img className="left__img" src={placeholderImgGreen} alt="" />
                             </div>
                             {isLoading ? <div> Загрузка...</div> :
                                 <>
                                     <h1 className="left__name">{last_name + " " + first_name} </h1>
                                     <p className="left__type"> {type == "student" ? "Студент" : "Сотрудник"} </p>
-                                    <p className="left__workplace"> {university + ", " + course + ' курс'} </p>
+                                    <p className="left__workplace"> {university} </p>
                                 </>
                             }
                         </div>
                         <div className="person-page__right">
-                            <h2 className="right__activities">Все участия</h2>
+
                             {isLoading ? <div>Загрузка...</div> :
-                                <div className="right__activities-list">
-                                    {projects.map(activity =>
-                                        <ActivityCard
-                                            activityData={activity}
-                                            activityType={"Проект"}
-                                        />
-                                    )}
-                                    {events.map(activity =>
-                                        <ActivityCard
-                                            activityData={activity}
-                                            activityType={"Эвент"}
-                                        />
-                                    )}
-                                </div>
+                                <>
+                                    <h2 className="right__activities">Участия</h2>
+                                    <div className="right__activities-list">
+                                        {projects.isEmpty ? <></> :
+                                            projects.map(activity =>
+                                                <ActivityCard
+                                                    activityData={activity}
+                                                    activityType={"Проект"}
+                                                />
+                                            )
+                                        }
+                                        {events.isEmpty ? <></> :
+                                            events.map(activity =>
+                                                <ActivityCard
+                                                    activityData={activity}
+                                                    activityType={"Эвент"}
+                                                />
+                                            )
+                                        }
+                                    </div>
+                                    {organizations.isEmpty ? <> </> :
+                                        <>
+                                            <h2 className="right__activities">Организовывал(а)</h2>
+                                            <div className="right__activities-list">
+                                                {organizations.map(activity =>
+                                                    <ActivityCard
+                                                        activityData={activity}
+                                                        activityType={"Проект"}
+                                                    />
+                                                )}
+                                            </div>
+                                        </>
+                                    }
+
+                                </>
                             }
                         </div>
                     </div>

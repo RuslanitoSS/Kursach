@@ -1,12 +1,38 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
+from accounts.models import CustomUser
 
-class Student(models.Model):
+
+
+class Event(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=255)
+    description = models.TextField()
+    short_description = models.CharField(max_length=255)
+    address = models.CharField(max_length=255, blank=True, null=True)
+    start_date = models.DateField(null=True)
+    end_date = models.DateField(blank=True, null=True)
+    participants = models.ManyToManyField(CustomUser, related_name='events')
+
+    def __str__(self):
+        return self.name
+
+class Project(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=255)
+    description = models.TextField()
+    short_description = models.CharField(max_length=255)
+    participants = models.ManyToManyField(CustomUser, related_name='projects')
+
+    def __str__(self):
+        return self.name
+
+""" class Student(models.Model):
     id = models.AutoField(primary_key=True)
     first_name = models.CharField(max_length=255)
     middle_name = models.CharField(max_length=255, blank=True, null=True)
     last_name = models.CharField(max_length=255)
     university = models.CharField(max_length=255)
-    course = models.IntegerField()
     email = models.EmailField(unique=True, null=True)
     password = models.CharField(max_length=255)
 
@@ -23,32 +49,9 @@ class Staff(models.Model):
     password = models.CharField(max_length=255)
 
     def __str__(self):
-        return f"{self.first_name} {self.last_name}"
+        return f"{self.first_name} {self.last_name}" """
 
-class Event(models.Model):
-    id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=255)
-    description = models.TextField()
-    short_description = models.CharField(max_length=255)
-    address = models.CharField(max_length=255, blank=True, null=True)
-    start_date = models.DateField()
-    end_date = models.DateField(blank=True, null=True)
-    students = models.ManyToManyField(Student, related_name='events')
-    staff = models.ManyToManyField(Staff, related_name='events')
 
-    def __str__(self):
-        return self.name
-
-class Project(models.Model):
-    id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=255)
-    description = models.TextField()
-    short_description = models.CharField(max_length=255)
-    students = models.ManyToManyField(Student, related_name='projects')
-    staff = models.ManyToManyField(Staff, related_name='projects')
-
-    def __str__(self):
-        return self.name
 
 """ 
 Вместо M2M полей хотел использовать отдельные модели

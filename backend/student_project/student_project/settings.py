@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'accounts',
     'students',
     'corsheaders',
     'django.contrib.admin',
@@ -55,6 +56,8 @@ MIDDLEWARE = [
 CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'student_project.urls'
+
+AUTH_USER_MODEL = 'accounts.CustomUser'
 
 TEMPLATES = [
     {

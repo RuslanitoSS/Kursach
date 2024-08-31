@@ -2,8 +2,7 @@
 
 .login__button {
     box-sizing: border-box;
-    border-radius: 5px;
-    padding: 14px 14px;
+    padding: 10px 10px;
     border-radius: 123456px;
     display: flex;
 justify-content: center;
@@ -18,7 +17,7 @@ align-items: center;
     transition: all .1s ease;
 
     &__svg {
-        height: 30px;
+        height: 40px;
     }
 }
 

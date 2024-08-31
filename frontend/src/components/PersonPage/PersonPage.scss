@@ -13,24 +13,43 @@
     }
     
     &__right {
+        max-height: 60vh;
+        overflow-y: scroll;
+        overflow-x: hidden;
         width: 100%;
         display: flex;
         flex-direction: column;
         
+        &::-webkit-scrollbar {
+            width: 8px; /* Ширина вертикального скроллбара */
+        }
+
+        &::-webkit-scrollbar-track {
+            background: #343333; /* Цвет ползунка */
+            
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: #e1e1e1; /* Цвет фона полосы прокрутки */
+        }
     }
+    
     .left {
 
         &__photo {
             background-color: vb.$background-color-secondary;
             border-radius: 50%;
             display: flex;
-            padding: 40px;
+            width: 240px;
+            height: 240px;
             justify-content: center;
             align-items: center;
         }
 
         &__img {
-            width: 200px;    
+            width: 80%;
+            -webkit-user-drag: none;
+            user-select: none;
         }
 
         &__name{
@@ -53,6 +72,9 @@
             font-weight: 500;
             margin-bottom: 30px;
         }
+        &__activities:not(:first-of-type) {
+            margin-top: 20px;
+        }
         &__desc {
             font-size: 22px;
         }
@@ -67,15 +89,78 @@
 
         &__members {
             margin-top: 30px;
+            width: 100%;
 
             .members {
                 &-heading {
                     font-size: 32px;
                     font-weight: 500;
-                    
+                    margin-bottom: 30px;
                 }
             }
            
+            .people-list {
+                display: flex;
+                font-size: 20px;
+                width: 100%;
+
+                &__members {
+                    padding-left: 20px;
+                    border-left: 2px solid #343333;
+                }
+                
+                &__organizers {
+                    padding-right: 20px;
+                    border-right: 2px solid #343333;
+                }
+
+                .organizers-list {
+                    display: flex;
+                    gap: 10px;
+                    margin-bottom: 10px;
+                    overflow-x: scroll;
+                    height: fit-content;
+                    max-width: 300px;
+                    padding-bottom: 6px;
+
+                    &::-webkit-scrollbar {
+                        width: 8px; /* Ширина вертикального скроллбара */
+                        height: 4px;
+                    }
+            
+                    &::-webkit-scrollbar-track {
+                        background: #343333; /* Цвет ползунка */
+
+                    }
+            
+                    &::-webkit-scrollbar-thumb {
+                        background: #e1e1e1; /* Цвет фона полосы прокрутки */
+                }}
+
+                .members-list {
+                    display: flex;
+                    gap: 10px;
+                    margin-bottom: 10px;
+                    overflow-x: scroll;
+                    height: fit-content;
+                    max-width: 500px;
+                    padding-bottom: 6px;
+
+                    &::-webkit-scrollbar {
+                        width: 8px; /* Ширина вертикального скроллбара */
+                        height: 4px;
+                    }
+            
+                    &::-webkit-scrollbar-track {
+                        background: #343333; /* Цвет ползунка */
+                        
+                    }
+            
+                    &::-webkit-scrollbar-thumb {
+                        background: #e1e1e1; /* Цвет фона полосы прокрутки */}
+
+                }
+            }
         }
     }
     

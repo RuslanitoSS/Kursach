@@ -1,8 +1,8 @@
-# students/admin.py
 from django.contrib import admin
-from .models import Student, Staff, Event, Project
+from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django import forms
+from .models import CustomUser, Event, Project
 
-admin.site.register(Student)
-admin.site.register(Staff)
 admin.site.register(Event)
 admin.site.register(Project)
