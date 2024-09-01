@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import Header from '../header/Header';
 import Footer from '../footer/Footer';
-import StudentCard from './StudentCard/StudentCard'
+import PersonCard from '../PersonCard/PersonCard'
 import HeaderBottom from '../HeaderBottom/HeaderBottom'
 import { NavLink } from "react-router-dom";
 
@@ -10,7 +10,7 @@ import { NavLink } from "react-router-dom";
 const StudentsPage = () => {
 
     const [students, setStudents] = useState([]) 
-    const [isLoading, setIsLoading] = useState([true])
+    const [isLoading, setIsLoading] = useState(true)
 
     async function getData() {
         const url = "http://localhost:8000/api/students/";
@@ -53,7 +53,7 @@ const StudentsPage = () => {
 
                     <NavLink
                         className={"nav__el"}
-                        to="/staff"
+                        to="/employees"
                     >
                         Сотрудники
                     </NavLink>
@@ -89,7 +89,7 @@ const StudentsPage = () => {
                             {isLoading ? <div className="loadingText"> loading... </div> : 
                             students.map(student => (
                                 <li className="search__result__item" key={student.id}>
-                                 <StudentCard props={student}/>
+                                    <PersonCard props={student} type={'student'}/>
                                 </li>
                             ))
                             }

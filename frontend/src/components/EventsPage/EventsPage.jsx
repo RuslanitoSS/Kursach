@@ -1,56 +1,39 @@
 import React from "react";
 import Header from '../header/Header';
 import Footer from '../footer/Footer';
-import EventCard from './EventCard/EventCard'
+import EventCard from '../ActivityCard/ActivityCard'
 import HeaderBottom from '../HeaderBottom/HeaderBottom'
 import { NavLink, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import AxiosInstance from '../Axios/Axios'
-
-
 
 const EventsPage = () => {
-    const testEvents = [{
-        event_id: 1,
-        name: 'О3купавцйуцавпаиа',
-        short_description: '123455',
-        address: '2121',
-        start_date: Date.now(),
-        end_date: Date.now(),
-    }, {
-        event_id: 1,
-        name: 'О3купавцйуцавпаиа',
-        short_description: '123455',
-        address: '2121',
-        start_date: Date.now(),
-        end_date: Date.now(),
-    }, {
-        event_id: 1,
-        name: 'О3купавцйуцавпаиа',
-        short_description: '123455',
-        address: '2121',
-        start_date: Date.now(),
-        end_date: Date.now(),
-    }, {
-        event_id: 1,
-        name: 'О3купавцйуцавпаиа',
-        short_description: '123455',
-        address: '2121',
-        start_date: Date.now(),
-        end_date: Date.now(),
-    }]
-    const [events, setEvents] = useState(testEvents)
-    const [isLoading, setIsLoading] = useState(false)
+    const [events, setEvents] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
 
-    /* 
-    event_id={event.id} 
-    name={event.name} 
-    short_description={event.short_description} 
-    address={event.address} 
-    start_date={event.start_date} 
-    end_date={event.end_date}  */
+    async function getData() {
+        const url = "http://127.0.0.1:8000/api/events/";
 
+        try {
+            const response = await fetch(url);
 
+            if (!response.ok) {
+                throw new Error(`Код ошибки: ${response.status}`);
+            }
+
+            const json = await response.json();
+
+            setEvents(json);
+
+        } catch (error) {
+            console.error(error.message);
+        } finally {
+            setIsLoading(false);
+        }
+    }
+
+    useEffect(() => {
+        getData()
+    }, [])
 
     return (
         <>
@@ -67,7 +50,7 @@ const EventsPage = () => {
 
                     <NavLink
                         className={"nav__el"}
-                        to="/staff"
+                        to="/employees"
                     >
                         Сотрудники
                     </NavLink>
@@ -107,22 +90,19 @@ const EventsPage = () => {
                             </Link>
                         </div>
 
-                        <div className="search__result">
+                        <ul className="search__result">
                             {isLoading ? <p className={"nav__el"} >загрузка...</p> :
                                 events.map(event => (
+                                    <li key={event.id}> 
+                                        <EventCard
+                                            props={event}
+                                            type={'event'}
+                                        />
+                                    </li>
 
-                                    <EventCard
-                                        event_id={event.id}
-                                        name={event.name}
-                                        short_description={event.short_description}
-                                        address={event.address}
-                                        start_date={event.start_date}
-                                        end_date={event.end_date}
-
-                                    />
                                 ))}
 
-                        </div>
+                        </ul>
                     </div>
                 </div>
             </main>

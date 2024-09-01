@@ -1,12 +1,40 @@
-import React from "react";
+import React, {useState, useEffect }from "react";
 import Header from '../header/Header';
 import Footer from '../footer/Footer';
-import ProjectCard from './ProjectCard/ProjectCard'
+import ProjectCard from '../ActivityCard/ActivityCard'
 import HeaderBottom from '../HeaderBottom/HeaderBottom'
 import { NavLink,Link } from "react-router-dom";
 
 
 const StudentsPage = () => {
+    const [projects, setProjects] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
+
+    async function getData() {
+        const url = "http://127.0.0.1:8000/api/projects/";
+
+        try {
+            const response = await fetch(url);
+
+            if (!response.ok) {
+                throw new Error(`Код ошибки: ${response.status}`);
+            }
+
+            const json = await response.json();
+
+            setProjects(json);
+
+        } catch (error) {
+            console.error(error.message);
+        } finally {
+            setIsLoading(false);
+        }
+    }
+
+    useEffect(() => {
+        getData()
+    }, [])
+
     return (
         <>
             <header>
@@ -22,7 +50,7 @@ const StudentsPage = () => {
 
                     <NavLink
                         className={"nav__el"}
-                        to="/staff"
+                        to="/employees"
                     >
                         Сотрудники
                     </NavLink>
@@ -59,11 +87,18 @@ const StudentsPage = () => {
                                 Создать
                             </Link>
                         </div>
-                        <div className="search__result">
-                            <ProjectCard />
-                            <ProjectCard />
-                            <ProjectCard />
-                        </div>
+                        <ul className="search__result">
+                        {isLoading ? <p className={"nav__el"} >загрузка...</p> :
+                                projects.map(project => (
+                                    <li key={project.id}> 
+                                        <ProjectCard
+                                            props={project}
+                                            type={'project'}
+                                        />
+                                    </li>
+
+                                ))}
+                        </ul>
                     </div>
                 </div>
             </main>

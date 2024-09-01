@@ -2,17 +2,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const ActivityCard = ({ activityData, activityType }) => {
-    const linkUrl = activityType === 'Проект' ? '/projects/' : "/events/"
+    const { id, name, short_description, start_date, end_date } = activityData
     return (
         <div className="activity-card">
-            <Link className="activity-card__name" to={linkUrl + String(activityData.id)}>
-                {activityData.name}
-                <span className="activity-card__type"> {activityType}</span>
+            <Link className="activity-card__name" to={`/${activityType}s/${id}`}>
+                {name}
+                <span className="activity-card__type"> {activityType ==='event' ? 'Эвент' : 'Проект'}</span>
             </Link>
-            <p className="activity-card__description"> {activityData.short_description}</p>
-            {activityType === 'Проект' ? <></> :
-                <span className="activity-card__date"> {activityData.start_date + " - " + activityData.end_date} </span>
-            }
+            <p className="activity-card__description"> {short_description}</p>
+            {activityType === 'event' ?
+                (<span className="activity-card__date"> {start_date + " - " + end_date} </span>)
+                : <></>}
         </div>
     )
 }

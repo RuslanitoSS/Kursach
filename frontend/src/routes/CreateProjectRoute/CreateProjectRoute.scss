@@ -1,0 +1,86 @@
+.create {
+    &-heading {
+        font-size: 32px;
+        font-weight: 600;
+        color: #e1e1e1;
+        margin-top: 20px;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+    &-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 40px;
+
+        & div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        & fieldset {
+            max-width: max-content;
+        }
+
+        &__submit {
+            border-radius: 5px;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(2px);
+            background: #72c007;
+            font-weight: 500;
+            font-size: 28px;
+            color: #272727;
+            border: 2px solid #72c007;
+            height: fit-content;
+            width: fit-content;
+            transition: all .1s ease;
+            margin-top: 15px;
+        }
+
+        &__submit:hover {
+            color: #72c007;
+            background-color: #272727;
+            cursor: pointer;
+        }
+
+        & label {
+            font-size: 24px;
+            font-weight: 400;
+            color: #e1e1e1;
+            margin-block: 12px;
+
+            & span {
+                display: block;
+                max-width: fit-content;
+                font-size: 18px;
+                margin-top: 10px;
+            }
+        }
+
+        & textarea {
+            resize: none;
+            min-height: 50px;
+            background-color: #e1e1e1;
+            margin-left: 20px;
+            font-size: 22px;
+            padding-block: 4px;
+            padding-left: 3px;
+            border: none;
+
+        }
+
+        & input {
+            background-color: #e1e1e1;
+            margin-left: 20px;
+            font-size: 22px;
+            height: fit-content;
+            padding-block: 4px;
+            border: none;
+        }
+    }
+}

@@ -1,5 +1,4 @@
 import { NavLink, Link } from "react-router-dom";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const NavMenu = () => {
   return (
@@ -9,6 +8,7 @@ const NavMenu = () => {
           <NavLink
             className={"nav__el"}
             to="/#about"
+            end
           >
             О нас
           </NavLink>
@@ -17,6 +17,7 @@ const NavMenu = () => {
           <NavLink
             className={"nav__el"}
             to="/projects"
+            end
           >
             Проекты
           </NavLink>
@@ -25,6 +26,7 @@ const NavMenu = () => {
           <NavLink
             className={"nav__el"}
             to="/events"
+            end
           >
            Мероприятия
           </NavLink>
@@ -33,6 +35,7 @@ const NavMenu = () => {
           <NavLink
             className={"nav__el"}
             to="/students"
+            end
           >
             Студенты
           </NavLink>

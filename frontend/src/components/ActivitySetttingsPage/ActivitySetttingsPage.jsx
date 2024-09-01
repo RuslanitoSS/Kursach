@@ -3,10 +3,10 @@ import Header from '../header/Header'
 import Footer from '../footer/Footer'
 import PlaceHolderActivityImg from './PlaceHolderActivityImgGreen.svg'
 import { useParams, NavLink, Link } from 'react-router-dom'
-import PersonCard from './components/PersonCard'
 import HeaderBottom from '../HeaderBottom/HeaderBottom'
+import ActivityEditForm from './components/ActivityEditForm/ActivityEditForm'
 
-export default function ActivityPage({ type }) {
+export default function ActivitySetttingsPage({ type }) {
     const [isLoading, setIsLoading] = useState(true)
     const [profileData, setProfileData] = useState({})
     const { activityId } = useParams()
@@ -37,7 +37,7 @@ export default function ActivityPage({ type }) {
         getData()
     }, [])
 
-    const { name, description, short_description, start_date, participants, organizers } = profileData
+    const { name, description, short_description, start_date, end_date, address, participants, organizers } = profileData
 
     return (
         <>
@@ -47,6 +47,7 @@ export default function ActivityPage({ type }) {
                     <NavLink
                         className={"nav__el"}
                         to={`/${type}s/${activityId}`}
+                        end
                     >
                         Обзор
                     </NavLink>
@@ -76,42 +77,10 @@ export default function ActivityPage({ type }) {
                         <div className="person-page__right">
                             {isLoading ? <div>Загрузка...</div> :
                                 <>
-                                    <h2 className="right__activities">Описание</h2>
-                                    <p className='right__desc'>{description} </p>
-                                    <div className="right__members">
-                                        <h2 className="members-heading">Участники</h2>
-                                        <div className="people-list">
-                                            <div className='people-list__organizers'>
-                                                <div className="organizers-list">
-                                                    {organizers.map(orgnizer =>
-                                                        <Link to={`/users/${orgnizer.id}`}>
-                                                            <PersonCard
-                                                                personData={orgnizer}
-
-                                                            />
-                                                        </Link>
-                                                    )
-                                                    }
-                                                </div>
-                                                <span className='organizers-span'>Организаторы</span>
-                                            </div>
-                                            <div className='people-list__members'>
-                                                <div className="members-list">
-                                                    {participants.isEmpty ? <></> :
-                                                        participants.map(member =>
-                                                            <Link to={`/users/${member.id}`}>
-                                                                <PersonCard
-                                                                    personData={member}
-
-                                                                />
-                                                            </Link>
-                                                        )
-                                                    }
-                                                </div>
-                                                <span className='members-span'>Участники</span>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <ActivityEditForm 
+                                props={profileData}
+                                activityType={type}
+                                />
                                 </>
                             }
                         </div>

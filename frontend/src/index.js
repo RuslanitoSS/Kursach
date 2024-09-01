@@ -7,7 +7,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./styles/App.scss";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
 import StudentsPage from "./components/StudentsPage/StudentsPage"
-import StaffPage from "./components/StaffPage/StaffPage"
+import EmployeePage from "./components/EmployeePage/EmployeePage.jsx"
 import ProjectsPage from "./components/ProjectsPage/ProjectsPage"
 import PersonPage from "./components/PersonPage/PersonPage";
 import AdminPage from "./components/AdminPage/AdminPage";
@@ -17,7 +17,7 @@ import CreateProjectRoute from './routes/CreateProjectRoute/CreateProjectRoute.j
 import CreateEventRoute from './routes/CreateEventRoute/CreateEventRoute.jsx'
 import EventsPage from './components/EventsPage/EventsPage'
 import ActivityPage from './components/ActivityPage/ActivityPage'
-
+import ActivitySetttingsPage from './components/ActivitySetttingsPage/ActivitySetttingsPage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -45,8 +45,8 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/staff",
-    element: <StaffPage />,
+    path: "/employees",
+    element: <EmployeePage />,
     errorElement: <ErrorPage />,
   },
   {
@@ -55,8 +55,12 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/events/:eventId",
+    path: "/events/:activityId",
     element: <ActivityPage type={'event'}/>,
+    errorElement: <ErrorPage />,
+  },  {
+    path: "/events/:activityId/settings",
+    element: <ActivitySetttingsPage type={'event'}/>,
     errorElement: <ErrorPage />,
   },
   {
@@ -65,18 +69,17 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/projects/:projectid",
+    path: "/projects/:activityId",
     element: <ActivityPage type={'project'}/>,
     errorElement: <ErrorPage />,
-  },
-  {
-    path: "/students/:studentId",
-    element: <PersonPage type="student"/>,
+  },{
+    path: "/projects/:activityId/settings",
+    element: <ActivitySetttingsPage type={'project'}/>,
     errorElement: <ErrorPage />,
   },
   {
-    path: "/staff/:staffId",
-    element: <PersonPage type="staff"/>,
+    path: "/users/:userId",
+    element: <PersonPage/>,
     errorElement: <ErrorPage />,
   },
   {

@@ -1,4 +1,4 @@
-@use '../../../styles/variables.scss' as vb;
+@use '../../styles/variables.scss' as vb;
 
 .project-card {
     box-sizing: border-box;
@@ -23,10 +23,12 @@
         justify-content: center;
         align-items: center;
         border-radius: 50%;
+        width: 140px;
+        aspect-ratio: 1/1;
 
         .left__photo {
-            margin: 30px 30px;
-            scale: 1.2;
+            width: 60%;
+            aspect-ratio: 1/1;
         }
     }
 
@@ -47,10 +49,24 @@
             font-weight: 600;
         }
 
-        &__place {
-            margin: 1rem 0;
-        }
+        &__date {
+            font-size: 18px;
+            width: fit-content;
+            margin-left: 15px;
+            padding: 6px 12px;
+            background-color: #e1e1e1;
+            color: black;
+            font-weight: 600;
+            border-radius: 20px;
+            text-wrap: nowrap;
 
+            &.hidden {
+                display: none;
+            }
+        }
+        &__description {
+            margin-top: 1rem;
+        }
         &__organizers{
             display: flex;
             margin: 0;

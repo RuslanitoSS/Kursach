@@ -1,0 +1,17 @@
+.activity-page__person-card {
+    background-color: #343333;
+    border-radius: 5980%;
+    display: flex;
+    width: 60px;
+    aspect-ratio: 1/1;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+.person-card {
+    &__img {
+        width: 70%;
+        -webkit-user-drag: none;
+        user-select: none;
+    }
+}
