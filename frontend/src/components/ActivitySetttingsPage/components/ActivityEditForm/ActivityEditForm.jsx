@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './ActivityEditForm.scss'
 import TextareaAutosize from 'react-textarea-autosize';
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import ActivityCard from '../../../ActivityCard/ActivityCard';
+import { useNavigate, useParams } from 'react-router-dom';
+import DeleteProjectButton from '../DeleteProjectButton/DeleteProjectButton'
 import PersonCard from '../../../ActivityPage/components/PersonCard';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
@@ -29,6 +29,20 @@ const ActivityEditForm = ({ props, activityType }) => {
         organizers: activityOrganizers,
     });
 
+    const handleDescriptionChange = (e) => {
+        setActivity(prevActivity => ({
+            ...prevActivity,
+            description: e.target.value
+        }));
+    }
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setActivity(prevActivity => ({
+            ...prevActivity,
+            [name]: value
+        }));
+    };
+
 
 
     /* organizers */
@@ -40,10 +54,10 @@ const ActivityEditForm = ({ props, activityType }) => {
     const addOrganizers = (e) => {
         e.preventDefault()
         let organizerIds = organizersInputData
-        setActivityOrganizers((prevOrganizers) => [...prevOrganizers, organizerIds.split(',').map((id) => id.trim())])
+        const idsArray = organizerIds.split(',').map((id) => id.trim())
+        const filteredIds = idsArray.filter((id) => !isNaN(Number(id)) && Number(id) > 0);
+        setActivityOrganizers((prevOrganizers) => [...prevOrganizers, ...filteredIds])
     };
-
-
 
     /* participants */
     const removeParticipantById = (participantId) => {
@@ -52,27 +66,62 @@ const ActivityEditForm = ({ props, activityType }) => {
         );
     };
     const addParticipants = (e) => {
+        console.log(e)
         e.preventDefault()
         let participantsIds = participantsInputData
-        setActivityParticipants((prevParticipant) => [...prevParticipant, participantsIds.split(',').map((id) => id.trim())])
+        const idsArray = participantsIds.split(',').map((id) => id.trim())
+        const filteredIds = idsArray.filter((id) => !isNaN(Number(id)) && Number(id) > 0);
+        setActivityParticipants((prevParticipant) => [...prevParticipant, ...filteredIds])
     };
 
-    const handleDescriptionChange = (e) => {
-        setActivity(prevActivity => ({
-            ...prevActivity,
-            description: e.target.value
-        }));
-    }
 
 
 
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setActivity(prevActivity => ({
-            ...prevActivity,
-            [name]: value
-        }));
+    const [deleteClickCount, setDeleteClickCount] = useState(0);
+
+    const handleDeleteClick = () => {
+        if (deleteClickCount === 0) {
+            setDeleteClickCount(1);
+        } else if (deleteClickCount === 1) {
+            setDeleteClickCount(2);
+        } else if (deleteClickCount === 2) {
+            deleteProjectAPI();
+        }
+    };
+
+    const getButtonText = () => {
+        if (deleteClickCount === 0) {
+            return 'Удалить проект';
+        } else if (deleteClickCount === 1) {
+            return 'Вы уверены?';
+        } else if (deleteClickCount === 2) {
+            return 'Точно уверены??';
+        }
+        return 'Удалить';
+    };
+
+    const deleteProjectAPI = async () => {
+        try {
+            const response = await fetch(`http://127.0.0.1:8000/api/projects/1/delete/`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (response.ok) {
+
+                setTimeout(() => {
+                    navigate(`/${activityType}s/`);
+                }, 1000);
+
+            } else {
+                throw new Error('Ошибка при удалении проекта.');
+            }
+        } catch (error) {
+            console.error('Ошибка:', error);
+        }
     };
 
     const handleSubmit = (e) => {
@@ -179,6 +228,7 @@ const ActivityEditForm = ({ props, activityType }) => {
                                 type="text"
                                 id="organizers"
                                 placeholder='ID через запятую'
+                                pattern='[0-9]+(,[0-9]+)*'
                                 onChange={(e) => setOrganizersInputData(e.target.value)}
                             />
                             <button className="input-add-btn" onClick={(e) => addOrganizers(e)}>
@@ -208,6 +258,7 @@ const ActivityEditForm = ({ props, activityType }) => {
                                 type="text"
                                 id="participants"
                                 placeholder='ID через запятую'
+                                pattern='[0-9]+(,[0-9]+)*'
                                 onChange={(e) => setParticipantsInputData(e.target.value)}
                             />
                             <button className="input-add-btn" onClick={(e) => addParticipants(e)}>
@@ -231,8 +282,10 @@ const ActivityEditForm = ({ props, activityType }) => {
                         </div>
                     </div>
                 </fieldset>
-
             </form>
+            <button onClick={handleDeleteClick} className='right__edit-form__delete'>
+                {getButtonText()}
+            </button>
         </>
     );
 };

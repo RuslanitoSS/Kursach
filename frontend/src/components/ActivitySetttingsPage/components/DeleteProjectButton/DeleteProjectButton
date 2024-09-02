@@ -1,0 +1,61 @@
+import React, { useState } from 'react';
+
+
+const DeleteProjectButton = ({ projectId }) => {
+
+  const deleteProjectAPI = async (projectId) => {
+    /* const navigate = useNavigate() */
+    try {
+      const response = await fetch(`/projects/${projectId}/delete/`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+  
+      if (response.ok) {
+  
+        setTimeout(() => {
+          /* navigate(`/${activityType}s/`); */
+        }, 1000);
+  
+      } else {
+        throw new Error('Ошибка при удалении проекта.');
+      }
+    } catch (error) {
+      console.error('Ошибка:', error);
+    }
+  };
+  
+
+  const [deleteClickCount, setDeleteClickCount] = useState(0);
+
+  const handleDeleteClick = () => {
+    if (deleteClickCount === 0) {
+      setDeleteClickCount(1);
+    } else if (deleteClickCount === 1) {
+      setDeleteClickCount(2);
+    } else if (deleteClickCount === 2) {
+      deleteProjectAPI(projectId);
+    }
+  };
+
+  const getButtonText = () => {
+    if (deleteClickCount === 0) {
+      return 'Удалить проект';
+    } else if (deleteClickCount === 1) {
+      return 'Вы уверены?';
+    } else if (deleteClickCount === 2) {
+      return 'Точно уверены??';
+    }
+    return 'Удалить';
+  };
+
+  return (
+    <button onClick={handleDeleteClick} className='right__edit-form__delete'>
+      {getButtonText()}
+    </button>
+  );
+};
+
+export default DeleteProjectButton;
