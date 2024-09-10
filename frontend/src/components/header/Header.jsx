@@ -1,8 +1,9 @@
-import NavMenu from "./components/menu/NavMenu";
-import logoSrc from './лого.svg'
-import profileSVG from '../PersonCard/placeholder.svg'
-import { NavLink, Link } from "react-router-dom";
 import React from "react";
+import NavMenu from "./components/menu/NavMenu";
+import Login from "./components/login/Login";
+import logoSrc from './лого.svg'
+import { Link } from "react-router-dom";
+
 
 
 const Header = () => {
@@ -12,22 +13,11 @@ const Header = () => {
                 <Link to="/">
                 <img src={logoSrc} />
                 </Link>
-                
-
             </div>
             <div className="header__nav-button">
                 <NavMenu />
-
-                <NavLink
-                    className={"nav__el login__button"}
-                    to="/users/1"
-                >
-                    <img src={profileSVG} alt="" className="login__button__svg"/>
-                </NavLink>
-
-
+                <Login />
             </div>
-
         </div>
     )
 }

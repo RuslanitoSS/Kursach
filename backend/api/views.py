@@ -96,25 +96,31 @@ def project_create(request):
 @csrf_exempt
 def project_update(request, project_id):
     if request.method == 'POST':
-        # Получаем проект по ID или возвращаем 404, если он не найден
         project = get_object_or_404(Project, id=project_id)
 
         try:
-            # Преобразуем JSON в Python-объект
             data = json.loads(request.body)
 
-            # Обновляем поля проекта, если они присутствуют в запросе
-            if 'name' in data:
-                project.name = data['name']
-            if 'description' in data:
-                project.description = data['description']
-            if 'short_description' in data:
-                project.short_description = data['short_description']
+            name = data.get('name')
+            description = data.get('description')
+            short_description = data.get('short_description')
+            participants_ids = data.get('participants', [])
+            organizers_ids = data.get('organizers', [])
 
-            # Сохраняем изменения
+            project.name = name
+            project.description = description
+            project.short_description = short_description
+        
+            if participants_ids:
+                participants = CustomUser.objects.filter(id__in=participants_ids)
+                project.participants.set(participants)
+
+            if organizers_ids:
+                organizers = CustomUser.objects.filter(id__in=organizers_ids)
+                project.organizers.set(organizers)
+
             project.save()
 
-            # Возвращаем обновленные данные проекта в формате JSON
             response_data = {
                 'id': project.id,
             }

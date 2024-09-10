@@ -8,7 +8,7 @@ const FirstScreen = () => {
             <p className="firstsreen__description">
                 Платформа для реализации своего творческого потенциала, поиска своей аудитории и работадалей
             </p>
-            <Login className={'login__button firstsreen__button'} text={'Присоединиться'}/>
+            <div className={'login__button firstsreen__button'}> Присоединиться</div>
             <div className='firstsreen_img firstsreen_img-1'>
                 <p>Твори</p>
                 <img src={png} alt="make"/>
